@@ -51,11 +51,13 @@ function createCountries(countries) {
 
 function creatInfo({ capital, flags, languages, name, population }) {
   return `
-  	<img src="${flags.svg}" alt="${flags.alt} || flag of country" width="100">
-  	<h2>${name.official}</h2>
+  <div class="country-info__head">
+  <img src="${flags.svg}" alt="${flags.alt} || flag of country" width="100">
+  	<h2 class="country-info__title">${name.official}</h2></div>
   <p>Capital: ${capital[0]}</p>
-  <p>Languages: ${Object.values(languages)}</p>
   <p>Population: ${population} people</p>
+  <p>Languages: ${Object.values(languages)}</p>
+
   `;
 }
 
@@ -79,5 +81,5 @@ function updateCountryInfo(markup) {
 }
 
 function onError() {
-  return Notiflix.Notify.failure('Country not found');
+  return Notiflix.Notify.failure('Oops, there is no country with that name');
 }

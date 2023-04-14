@@ -41,3 +41,13 @@ body {
   width: auto;
   padding: 10px;
 }
+
+.country-info__head {
+  display: flex;
+  align-items: center;
+}
+
+.country-info__title {
+  margin: 0;
+  margin-left: 10px;
+}
