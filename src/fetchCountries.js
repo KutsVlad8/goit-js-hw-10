@@ -4,9 +4,13 @@ export default function fetchCountries(name) {
   return fetch(`https://restcountries.com/v3.1/name/${name}?${fields}`)
     .then(response => {
       if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        throw new Error(`${response.status}`);
       }
       return response.json();
     })
-    .catch(err => console.error(`Fetch problem: ${err.message}`));
+    .catch(err => {
+      if (err.message === '404') {
+        Notiflix.Notify.failure('Oops, there is no country with that name');
+      }
+    });
 }
