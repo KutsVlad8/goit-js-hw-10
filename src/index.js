@@ -22,7 +22,13 @@ function onInput(event) {
     return;
   }
 
-  fetchCountries(inputValue).then(createCountries).catch(onError);
+  fetchCountries(inputValue)
+    .then(createCountries)
+    .catch(err => {
+      if (err.message === '404') {
+        Notiflix.Notify.failure('Oops, there is no country with that name');
+      }
+    });
 }
 
 function createCountries(countries) {
@@ -78,10 +84,4 @@ function updateCountryList(markup) {
 
 function updateCountryInfo(markup) {
   refs.info.innerHTML = markup;
-}
-
-function onError() {
-  if (err.message === '404') {
-    return Notiflix.Notify.failure('Oops, there is no country with that name');
-  }
 }
