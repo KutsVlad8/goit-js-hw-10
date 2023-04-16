@@ -81,5 +81,7 @@ function updateCountryInfo(markup) {
 }
 
 function onError() {
-  return Notiflix.Notify.failure('Oops, there is no country with that name');
+  if (err.message === '404') {
+    return Notiflix.Notify.failure('Oops, there is no country with that name');
+  }
 }
